@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn Quran with Us | Ustaz Asmat Ullah</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C9A84C;--gold-light:#F0D080;--green-deep:#0D3D2B;--green-mid:#1A5C3F;--green-light:#2E8B57;
+  --cream:#FBF7EE;--cream-dark:#F0E8D0;--white:#FFFFFF;--text-dark:#1a1a1a;--text-mid:#3d3d3d;
+}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;}
+
+/* TOP HADITH BAR */
+.hadith-bar{background:#06241a;padding:0.6rem 1rem;text-align:center;border-bottom:1px solid var(--gold);}
+.hadith-arabic{font-family:'Amiri',serif;color:var(--gold-light);font-size:1.05rem;}
+.hadith-translation{color:rgba(255,255,255,0.65);font-size:0.78rem;margin-top:0.15rem;}
+
+/* WELCOME BANNER */
+.welcome-bar{background:var(--gold);color:var(--green-deep);text-align:center;padding:0.5rem;font-weight:700;font-size:0.95rem;}
+
+.lang-switcher{display:flex;gap:0.3rem;background:rgba(255,255,255,0.08);border-radius:20px;padding:0.25rem;flex-wrap:wrap;}
+.lang-btn{background:transparent;border:none;color:rgba(255,255,255,0.6);padding:0.35rem 0.6rem;border-radius:16px;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+.lang-btn.active{background:var(--gold);color:var(--green-deep);}
+
+nav{background:var(--green-deep);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold);gap:1rem;flex-wrap:wrap;}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.1rem;font-weight:700;}
+.nav-links{display:flex;gap:1.5rem;align-items:center;}
+.nav-links a{color:var(--cream);text-decoration:none;font-size:0.85rem;}
+.nav-cta{background:var(--gold);color:var(--green-deep)!important;padding:0.45rem 1.1rem;border-radius:20px;font-weight:600;}
+
+.hero{background:linear-gradient(135deg,var(--green-deep) 0%,var(--green-mid) 60%,#1e4d35 100%);min-height:85vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C' fill-opacity='0.07'%3E%3Cpath d='M30 0L0 30l30 30 30-30z'/%3E%3C/g%3E%3C/svg%3E");opacity:0.4;}
+.bismillah{font-family:'Amiri',serif;font-size:2.2rem;color:var(--gold-light);margin-bottom:1.5rem;position:relative;}
+.hero-badge{background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold-light);padding:0.35rem 1.2rem;border-radius:20px;font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.2rem;display:inline-block;position:relative;}
+.hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;color:var(--white);line-height:1.15;margin-bottom:0.5rem;position:relative;}
+.hero h1 span{color:var(--gold);}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.75);margin-bottom:0.4rem;position:relative;}
+.hero-name{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold-light);margin-bottom:1.8rem;position:relative;}
+.hero-desc{max-width:560px;color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.7;margin-bottom:2.5rem;position:relative;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;position:relative;}
+.btn-primary{background:var(--gold);color:var(--green-deep);padding:0.85rem 2rem;border-radius:30px;font-weight:700;font-size:0.95rem;text-decoration:none;border:none;cursor:pointer;display:inline-block;}
+.btn-outline{background:transparent;color:var(--gold);padding:0.85rem 2rem;border-radius:30px;font-weight:600;font-size:0.95rem;text-decoration:none;border:1.5px solid var(--gold);display:inline-block;}
+.hero-stats{display:flex;gap:3rem;margin-top:3.5rem;position:relative;}
+.stat{text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);font-weight:700;}
+.stat-label{font-size:0.78rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1px;}
+
+.social-bar{background:var(--green-deep);border-top:1px solid rgba(201,168,76,0.2);padding:1rem 2rem;display:flex;justify-content:center;gap:1.5rem;align-items:center;flex-wrap:wrap;}
+.social-btn{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 1.2rem;border-radius:20px;font-size:0.85rem;font-weight:600;text-decoration:none;}
+.social-fb{background:#1877F2;color:#fff;}
+.social-tt{background:#000;color:#fff;border:1px solid #333;}
+.social-wa{background:#25D366;color:#fff;}
+.social-bar-label{color:rgba(255,255,255,0.5);font-size:0.8rem;}
+
+.divider{text-align:center;padding:1.5rem 0;background:var(--cream-dark);}
+.divider-text{font-family:'Amiri',serif;font-size:1.4rem;color:var(--green-deep);}
+
+.about-wrap{background:var(--cream);padding:5rem 2rem;}
+.about-grid{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;max-width:800px;margin:0 auto;}
+.about-img-box{background:var(--green-deep);border-radius:16px;padding:2rem;text-align:center;border:2px solid var(--gold);}
+.teacher-photo{width:200px;height:200px;border-radius:50%;border:4px solid var(--gold);margin:0 auto 1rem;display:block;object-fit:cover;object-position:50% 20%;background:rgba(201,168,76,0.1);}
+.about-name-big{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--white);margin:0.5rem 0 0.3rem;}
+.about-title-tag{background:var(--gold);color:var(--green-deep);padding:0.25rem 0.9rem;border-radius:12px;font-size:0.78rem;font-weight:700;display:inline-block;}
+.section-tag{color:var(--green-light);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:0.5rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--green-deep);margin-bottom:1rem;}
+.about-text{color:var(--text-mid);font-size:0.95rem;line-height:1.8;margin-bottom:1rem;}
+.about-points{list-style:none;margin-top:1rem;}
+.about-points li{padding:0.5rem 0;color:var(--text-mid);font-size:0.9rem;display:flex;align-items:center;gap:0.6rem;}
+.check{width:20px;height:20px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:0.7rem;flex-shrink:0;}
+.contact-box{margin-top:1.5rem;background:var(--green-deep);border-radius:12px;padding:1.2rem 1.5rem;}
+.contact-box-title{color:var(--gold-light);font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.8rem;}
+.contact-item{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;}
+.contact-item a{color:var(--white);font-size:0.9rem;text-decoration:none;}
+
+.poster-section{padding:3rem 2rem;background:var(--cream);text-align:center;}
+.poster-img{max-width:100%;width:100%;max-width:900px;border-radius:14px;box-shadow:0 10px 40px rgba(13,61,43,0.15);}
+
+.courses-bg{background:var(--cream-dark);padding:5rem 2rem;}
+.courses-inner{max-width:1100px;margin:0 auto;}
+.courses-header{text-align:center;margin-bottom:3rem;}
+.courses-header .section-tag{color:var(--green-light);}
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.course-card{background:var(--white);border:1px solid rgba(13,61,43,0.1);border-radius:14px;padding:1.8rem 1.5rem;transition:all 0.3s;}
+.course-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 25px rgba(13,61,43,0.1);}
+.course-icon{font-size:2rem;margin-bottom:1rem;}
+.course-level{font-size:0.72rem;color:var(--green-light);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.4rem;}
+.course-name{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--green-deep);margin-bottom:0.5rem;}
+.course-desc{font-size:0.85rem;color:var(--text-mid);line-height:1.6;}
+.course-tag{display:inline-block;margin-top:0.8rem;font-size:0.75rem;color:var(--green-light);border:1px solid var(--green-light);padding:0.2rem 0.7rem;border-radius:10px;}
+
+/* ALIM COURSES SECTION */
+.alim-section{background:var(--green-deep);padding:5rem 2rem;}
+.alim-inner{max-width:1100px;margin:0 auto;}
+.alim-header{text-align:center;margin-bottom:3rem;}
+.alim-header .section-tag{color:var(--gold-light);}
+.alim-header .section-title{color:var(--white);}
+.alim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.alim-card{background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.3);border-radius:14px;padding:1.5rem;text-align:center;}
+.alim-card:hover{border-color:var(--gold);background:rgba(201,168,76,0.08);}
+.alim-flag{font-size:2rem;margin-bottom:0.7rem;}
+.alim-name{font-family:'Playfair Display',serif;color:var(--white);font-size:1.05rem;margin-bottom:0.4rem;}
+.alim-desc{color:rgba(255,255,255,0.55);font-size:0.8rem;line-height:1.5;}
+
+.why-section{background:var(--cream);padding:5rem 2rem;}
+.why-inner{max-width:1100px;margin:0 auto;}
+.why-header{text-align:center;margin-bottom:3rem;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.why-card{background:var(--white);border:1px solid var(--cream-dark);border-radius:14px;padding:1.8rem;text-align:center;}
+.why-card:hover{box-shadow:0 8px 30px rgba(13,61,43,0.1);}
+.why-icon-wrap{width:56px;height:56px;background:rgba(13,61,43,0.07);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;}
+.why-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--green-deep);margin-bottom:0.4rem;}
+.why-desc{font-size:0.85rem;color:var(--text-mid);line-height:1.6;}
+
+.testi-bg{background:var(--cream-dark);padding:5rem 2rem;}
+.testi-inner{max-width:900px;margin:0 auto;}
+.testi-header{text-align:center;margin-bottom:3rem;}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.testi-card{background:var(--white);border-radius:14px;padding:1.8rem;border-left:4px solid var(--gold);}
+.testi-stars{color:var(--gold);font-size:0.9rem;margin-bottom:0.7rem;}
+.testi-text{font-size:0.9rem;color:var(--text-mid);line-height:1.7;font-style:italic;margin-bottom:1rem;}
+.testi-name{font-weight:600;font-size:0.85rem;color:var(--green-deep);}
+.testi-from{font-size:0.78rem;color:var(--text-mid);}
+
+.enroll-section{background:var(--green-deep);padding:5rem 2rem;text-align:center;}
+.enroll-inner{max-width:650px;margin:0 auto;}
+.enroll-arabic{font-family:'Amiri',serif;font-size:2rem;color:var(--gold-light);margin-bottom:1rem;}
+.enroll-title{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--white);margin-bottom:1rem;}
+.enroll-desc{color:rgba(255,255,255,0.65);font-size:0.95rem;margin-bottom:2rem;line-height:1.7;}
+.enroll-form{background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.3);border-radius:16px;padding:2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;text-align:left;}
+.form-label{font-size:0.8rem;color:rgba(255,255,255,0.6);}
+.form-input{background:rgba(255,255,255,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:0.65rem 0.9rem;color:var(--white);font-size:0.9rem;outline:none;font-family:'Inter',sans-serif;}
+.form-input::placeholder{color:rgba(255,255,255,0.3);}
+.form-input:focus{border-color:var(--gold);}
+.form-select{background:rgba(30,77,53,0.9);border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:0.65rem 0.9rem;color:var(--white);font-size:0.9rem;outline:none;font-family:'Inter',sans-serif;width:100%;cursor:pointer;}
+.form-select option{background:#0D3D2B;}
+.submit-btn{width:100%;background:var(--gold);color:var(--green-deep);padding:0.9rem;border-radius:30px;font-weight:700;font-size:1rem;border:none;cursor:pointer;margin-top:0.5rem;font-family:'Inter',sans-serif;}
+.submit-btn:hover{background:var(--gold-light);}
+
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:999;}
+.wa-btn{background:#25D366;color:#fff;padding:0.75rem 1.2rem;border-radius:30px;font-weight:700;font-size:0.9rem;text-decoration:none;display:flex;align-items:center;gap:0.5rem;box-shadow:0 4px 20px rgba(37,211,102,0.4);}
+
+footer{background:#060f0b;padding:3rem 2rem;}
+.footer-inner{max-width:1100px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}
+.footer-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.2rem;margin-bottom:0.5rem;}
+.footer-desc{color:rgba(255,255,255,0.4);font-size:0.82rem;line-height:1.6;}
+.footer-col-title{color:var(--gold);font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.8rem;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:0.4rem;}
+.footer-links a{color:rgba(255,255,255,0.45);font-size:0.85rem;text-decoration:none;}
+.footer-social{display:flex;gap:0.7rem;margin-top:1rem;}
+.fsoc{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;text-decoration:none;font-weight:700;}
+.fsoc-fb{background:#1877F2;color:#fff;}
+.fsoc-tt{background:#000;color:#fff;border:1px solid #333;}
+.fsoc-wa{background:#25D366;color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.2rem;text-align:center;color:rgba(255,255,255,0.25);font-size:0.78rem;}
+
+@media(max-width:700px){
+  .hero h1{font-size:2rem;}
+  .hero-stats{gap:1.5rem;}
+  .about-grid,.courses-grid,.why-grid,.testi-grid,.form-row,.form-row-3,.footer-top,.alim-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .social-bar{gap:0.7rem;}
+  .hadith-arabic{font-size:0.85rem;}
+}
+</style>
+</head>
+<body dir="rtl">
+
+<div class="hadith-bar">
+  <div class="hadith-arabic">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</div>
+  <div class="hadith-translation" data-i18n="hadith_t">تم میں سب سے بہتر وہ ہے جو قرآن سیکھے اور سکھائے</div>
+</div>
+
+<div class="welcome-bar" data-i18n="welcome_msg">خوش آمدید!</div>
+
+<nav>
+  <div class="nav-logo">🕌 Learn Quran with Us</div>
+  <div class="nav-links">
+    <a href="#" data-i18n="nav_home">ہوم</a>
+    <a href="#courses" data-i18n="nav_courses">کورسز</a>
+    <a href="#about" data-i18n="nav_about">تعارف</a>
+    <a href="#contact" data-i18n="nav_contact">رابطہ</a>
+    <a href="#enroll" class="nav-cta" data-i18n="nav_enroll">داخلہ لیں</a>
+  </div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('ur')">اردو</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('ps')">پښتو</button>
+    <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+    <button class="lang-btn" onclick="setLang('tr')">TR</button>
+    <button class="lang-btn" onclick="setLang('de')">DE</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+  <span class="hero-badge" data-i18n="hero_badge">آن لائن قرآن اکیڈمی</span>
+  <h1 data-i18n="hero_title">قرآن سیکھیں <span data-i18n="hero_title_name">عصمت اللہ</span> کے ساتھ</h1>
+  <p class="hero-sub" data-i18n="hero_sub">آن لائن قرآن تعلیم</p>
+  <p class="hero-name" data-i18n="hero_academy">Learn Quran with Us Academy</p>
+  <p class="hero-desc" data-i18n="hero_desc">گھر بیٹھے قرآن پاک کی تلاوت، تجوید اور حفظ سیکھیں — بچوں اور بڑوں دونوں کے لیے، ایک مستند استاذ کے ساتھ۔</p>
+  <div class="hero-btns">
+    <a href="#enroll" class="btn-primary" data-i18n="hero_btn1">🎓 ابھی داخلہ لیں</a>
+    <a href="#courses" class="btn-outline" data-i18n="hero_btn2">کورسز دیکھیں</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">50+</div><div class="stat-label" data-i18n="stat_students">طلباء</div></div>
+    <div class="stat"><div class="stat-num">5★</div><div class="stat-label" data-i18n="stat_rating">ریٹنگ</div></div>
+    <div class="stat"><div class="stat-num">7+</div><div class="stat-label" data-i18n="stat_years">سال تجربہ</div></div>
+    <div class="stat"><div class="stat-num">24/7</div><div class="stat-label" data-i18n="stat_support">سپورٹ</div></div>
+  </div>
+</section>
+
+<div class="social-bar">
+  <span class="social-bar-label" data-i18n="follow_us">ہمیں فالو کریں:</span>
+  <a href="https://www.facebook.com/profile.php?id=61573682006093&mibextid=ZbWKwL" target="_blank" class="social-btn social-fb">📘 Facebook</a>
+  <a href="https://www.tiktok.com/@onlinequrantecher2" target="_blank" class="social-btn social-tt">🎵 TikTok</a>
+  <a href="https://wa.me/923418116520" target="_blank" class="social-btn social-wa">💬 WhatsApp</a>
+</div>
+
+<div class="divider">
+  <span class="divider-text">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</span>
+</div>
+
+<div class="about-wrap" id="about">
+  <div class="about-grid">
+    <div class="about-img-box">
+      <img src="data:image/jpeg;base64,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" alt="Asmat Ullah" class="teacher-photo">
+      <div class="about-name-big" data-i18n="teacher_name">عصمت اللہ</div>
+      <div style="margin:0.5rem 0;"><span class="about-title-tag" data-i18n="teacher_tag">مستند قرآن استاذ</span></div>
+      <p style="color:rgba(255,255,255,0.55);font-size:0.82rem;margin-top:0.8rem;" data-i18n="teacher_subtag">آن لائن قرآن معلم</p>
+      <div style="border-top:1px solid rgba(201,168,76,0.2);margin-top:1.5rem;padding-top:1.2rem;display:flex;justify-content:space-around;">
+        <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);">50+</div><div style="font-size:0.72rem;color:rgba(255,255,255,0.5);" data-i18n="students_taught">طلباء پڑھائے</div></div>
+        <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);">7+</div><div style="font-size:0.72rem;color:rgba(255,255,255,0.5);" data-i18n="years_teaching">سال تجربہ</div></div>
+      </div>
+    </div>
+    <div>
+      <p class="section-tag" data-i18n="about_tag">استاذ کے بارے میں</p>
+      <h2 class="section-title" data-i18n="about_title">استاذ عصمت اللہ</h2>
+      <p class="about-text" data-i18n="about_p1">السلام علیکم! میں عصمت اللہ ہوں، ایک تجربہ کار آن لائن قرآن استاذ — ہر عمر کے طلباء کو قرآن پاک سے جوڑنے میں مدد کرتا ہوں۔</p>
+      <ul class="about-points">
+        <li><span class="check">✓</span><span data-i18n="point1">تجوید اور قرآن کی تلاوت میں مستند</span></li>
+        <li><span class="check">✓</span><span data-i18n="point2">بچوں اور بڑوں کو دنیا بھر میں پڑھاتے ہیں</span></li>
+        <li><span class="check">✓</span><span data-i18n="point3">پاکستان، کینیڈا اور جرمنی سے طلباء</span></li>
+        <li><span class="check">✓</span><span data-i18n="point4">اردو اور انگریزی بولنے والے طلباء کے لیے دستیاب</span></li>
+      </ul>
+      <div class="contact-box" id="contact">
+        <div class="contact-box-title" data-i18n="contact_title">📞 رابطہ کریں</div>
+        <div class="contact-item">💬 <a href="https://wa.me/923418116520" target="_blank">WhatsApp: ‎+92 341 8116520</a></div>
+        <div class="contact-item">💬 <a href="https://wa.me/923042378071" target="_blank">WhatsApp: ‎+92 304 2378071</a></div>
+        <div class="contact-item">📘 <a href="https://www.facebook.com/profile.php?id=61573682006093" target="_blank">Facebook: Learn Quran with Us</a></div>
+        <div class="contact-item">🎵 <a href="https://www.tiktok.com/@onlinequrantecher2" target="_blank">TikTok: @onlinequran364</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="courses-bg" id="courses">
+  <div class="courses-inner">
+    <div class="courses-header">
+      <p class="section-tag" data-i18n="courses_tag">ہمارے پروگرام</p>
+      <h2 class="section-title" data-i18n="courses_title">پیش کردہ کورسز</h2>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card"><div class="course-icon">📖</div><div class="course-level" data-i18n="c1_level">بنیادی</div><div class="course-name" data-i18n="c1_name">نورانی قاعدہ</div><p class="course-desc" data-i18n="c1_desc">عربی حروف، آوازیں اور آسان الفاظ سے شروعات کریں۔</p><span class="course-tag" data-i18n="c1_tag">بچوں کے لیے مثالی</span></div>
+      <div class="course-card"><div class="course-icon">🎙️</div><div class="course-level" data-i18n="c2_level">درمیانہ</div><div class="course-name" data-i18n="c2_name">قرآن مع تجوید</div><p class="course-desc" data-i18n="c2_desc">تجوید کے قواعد سیکھیں اور درست تلفظ کے ساتھ تلاوت کریں۔</p><span class="course-tag" data-i18n="c2_tag">تمام عمریں</span></div>
+      <div class="course-card"><div class="course-icon">🧠</div><div class="course-level" data-i18n="c3_level">اعلیٰ</div><div class="course-name" data-i18n="c3_name">حفظ القرآن</div><p class="course-desc" data-i18n="c3_desc">روزانہ نظرثانی اور رہنمائی کے ساتھ قرآن پاک حفظ کریں۔</p><span class="course-tag" data-i18n="c3_tag">حفظ القرآن</span></div>
+      <div class="course-card"><div class="course-icon">🌍</div><div class="course-level" data-i18n="c4_level">ترجمہ</div><div class="course-name" data-i18n="c4_name">ترجمہ قرآن</div><p class="course-desc" data-i18n="c4_desc">قرآن کے معنی اپنی زبان میں سمجھیں۔</p><span class="course-tag" data-i18n="c4_tag">ترجمہ قرآن</span></div>
+      <div class="course-card"><div class="course-icon">🧒</div><div class="course-level" data-i18n="c5_level">بچوں کے لیے خاص</div><div class="course-name" data-i18n="c5_name">بچوں کی قرآن کلاس</div><p class="course-desc" data-i18n="c5_desc">دلچسپ اور عمر کے مطابق سرگرمیوں کے ساتھ قرآن کا سبق۔</p><span class="course-tag">Age 4–14</span></div>
+      <div class="course-card"><div class="course-icon">🕌</div><div class="course-level" data-i18n="c6_level">بڑوں کے لیے</div><div class="course-name" data-i18n="c6_name">بڑوں کا قرآن کورس</div><p class="course-desc" data-i18n="c6_desc">سیکھنے میں کبھی دیر نہیں۔ آرام دہ رفتار اور لچکدار اوقات۔</p><span class="course-tag" data-i18n="c6_tag">لچکدار اوقات</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ALIM/ALIMA COURSES -->
+<div class="alim-section">
+  <div class="alim-inner">
+    <div class="alim-header">
+      <p class="section-tag" data-i18n="alim_tag">خصوصی شارٹ کورسز</p>
+      <h2 class="section-title" data-i18n="alim_title">عالم / عالمہ کورسز — اپنی زبان میں</h2>
+    </div>
+    <div class="alim-grid">
+      <div class="alim-card"><div class="alim-flag">🇸🇦</div><div class="alim-name" data-i18n="alim_ar">عربی عالم کورس</div><p class="alim-desc" data-i18n="alim_ar_d">عربی بولنے والے طلباء کے لیے</p></div>
+      <div class="alim-card"><div class="alim-flag">🇵🇰</div><div class="alim-name" data-i18n="alim_ur">اردو عالم کورس</div><p class="alim-desc" data-i18n="alim_ur_d">اردو بولنے والے طلباء کے لیے</p></div>
+      <div class="alim-card"><div class="alim-flag">🏔️</div><div class="alim-name" data-i18n="alim_ps">پشتو عالم کورس</div><p class="alim-desc" data-i18n="alim_ps_d">پشتو بولنے والے طلباء کے لیے</p></div>
+      <div class="alim-card"><div class="alim-flag">🇬🇧</div><div class="alim-name" data-i18n="alim_en">انگلش عالم کورس</div><p class="alim-desc" data-i18n="alim_en_d">انگریزی بولنے والے طلباء کے لیے</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="why-section">
+  <div class="why-inner">
+    <div class="why-header">
+      <p class="section-tag" data-i18n="why_tag">ہمیں کیوں چنیں</p>
+      <h2 class="section-title" data-i18n="why_title">عصمت اللہ سے کیوں سیکھیں؟</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon-wrap">🌐</div><div class="why-title" data-i18n="w1_title">کہیں سے بھی سیکھیں</div><p class="why-desc" data-i18n="w1_desc">دنیا میں کہیں سے بھی کلاسز لیں۔ صرف فون یا لیپ ٹاپ چاہیے۔</p></div>
+      <div class="why-card"><div class="why-icon-wrap">🎓</div><div class="why-title" data-i18n="w2_title">مستند استاذ</div><p class="why-desc" data-i18n="w2_desc">عصمت اللہ تجربہ کار اور قابل قرآن استاذ ہیں۔</p></div>
+      <div class="why-card"><div class="why-icon-wrap">🕐</div><div class="why-title" data-i18n="w3_title">لچکدار وقت</div><p class="why-desc" data-i18n="w3_desc">صبح، شام یا ویک اینڈ — اپنی پسند کا وقت چنیں۔</p></div>
+      <div class="why-card"><div class="why-icon-wrap">👨‍👩‍👧</div><div class="why-title" data-i18n="w4_title">بچوں اور بڑوں کے لیے</div><p class="why-desc" data-i18n="w4_desc">چاہے عمر 5 ہو یا 55، آپ کے لیے کورس موجود ہے۔</p></div>
+      <div class="why-card"><div class="why-icon-wrap">📜</div><div class="why-title" data-i18n="w5_title">سرٹیفکیٹ</div><p class="why-desc" data-i18n="w5_desc">کورس مکمل ہونے پر سرٹیفکیٹ حاصل کریں۔</p></div>
+      <div class="why-card"><div class="why-icon-wrap">🗣️</div><div class="why-title" data-i18n="w6_title">کئی زبانیں</div><p class="why-desc" data-i18n="w6_desc">اردو، انگریزی، پشتو، عربی، ترکی اور جرمن میں کلاسز۔</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="testi-bg">
+  <div class="testi-inner">
+    <div class="testi-header">
+      <p class="section-tag" data-i18n="testi_tag">طلباء کے تاثرات</p>
+      <h2 class="section-title" style="color:var(--green-deep);" data-i18n="testi_title">ہمارے طلباء کیا کہتے ہیں</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text" data-i18n="t1_text">"استاذ عصمت اللہ بہترین معلم ہیں۔ میری بیٹی نے 2 ہفتوں میں سورہ فاتحہ مکمل سیکھ لی۔"</p><div class="testi-name">Sara Ahmed</div><div class="testi-from">🇨🇦 Canada</div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"اللہ اجر دے استاذ صاحب کو۔ میں نے بڑی عمر میں قرآن سیکھنا شروع کیا اور آج میں تجوید سے پڑھ سکتا ہوں۔"</p><div class="testi-name">Muhammad Iqbal</div><div class="testi-from">🇵🇰 Pakistan</div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text" data-i18n="t3_text">"بہترین آن لائن قرآن استاذ۔ بہت صابر اور ہر کلاس منظم ہوتی ہے۔"</p><div class="testi-name">Fatima Khan</div><div class="testi-from">🇩🇪 Germany</div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"مجھے پہلے ڈر تھا کہ آن لائن سیکھنا مشکل ہوگا لیکن استاذ عصمت اللہ نے اسے بہت آسان بنا دیا۔"</p><div class="testi-name">Zainab Malik</div><div class="testi-from">🇵🇰 Pakistan</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="enroll-section" id="enroll">
+  <div class="enroll-inner">
+    <div class="enroll-arabic">اقرأ بِاسمِ رَبِّكَ</div>
+    <h2 class="enroll-title" data-i18n="enroll_title">داخلہ فارم</h2>
+    <p class="enroll-desc" data-i18n="enroll_desc">آج ہی سائن اپ کریں اور استاذ عصمت اللہ کے ساتھ اپنا قرآنی سفر شروع کریں!</p>
+    <div class="enroll-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="f_name">پورا نام</label>
+          <input class="form-input" id="f-name" type="text" placeholder="مثلاً Ahmed Ali">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="f_whatsapp">واٹس ایپ نمبر</label>
+          <input class="form-input" id="f-phone" type="text" placeholder="+92 300 0000000">
+        </div>
+      </div>
+      <div class="form-row-3">
+        <div class="form-group">
+          <label class="form-label" data-i18n="f_kids_count">بچوں کی تعداد</label>
+          <input class="form-input" id="f-kids-count" type="number" min="1" placeholder="مثلاً 2">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="f_kids_boys">لڑکے</label>
+          <input class="form-input" id="f-kids-boys" type="number" min="0" placeholder="0">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="f_kids_girls">لڑکیاں</label>
+          <input class="form-input" id="f-kids-girls" type="number" min="0" placeholder="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="f_age">عمر</label>
+          <select class="form-select" id="f-age">
+            <option value="" data-i18n="f_age_select">عمر منتخب کریں</option>
+            <option data-i18n="f_age1">بچہ (4–12 سال)</option>
+            <option data-i18n="f_age2">نوجوان (13–18)</option>
+            <option data-i18n="f_age3">بالغ (18+)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="f_course">کورس</label>
+          <select class="form-select" id="f-course">
+            <option value="" data-i18n="f_course_select">کورس منتخب کریں</option>
+            <option>Noorani Qaida</option>
+            <option>Quran with Tajweed</option>
+            <option>Hifz (Memorization)</option>
+            <option>Quran Translation</option>
+            <option>Kids Quran Class</option>
+            <option>Adult Quran Course</option>
+            <option>Alim/Alima Course — Arabic</option>
+            <option>Alim/Alima Course — Urdu</option>
+            <option>Alim/Alima Course — Pashto</option>
+            <option>Alim/Alima Course — English</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="f_country">ملک</label>
+          <select class="form-select" id="f-country">
+            <option value="" data-i18n="f_country_select">ملک منتخب کریں</option>
+            <option>🇵🇰 Pakistan — Karachi</option>
+            <option>🇵🇰 Pakistan — Lahore</option>
+            <option>🇵🇰 Pakistan — Islamabad</option>
+            <option>🇵🇰 Pakistan — Other City</option>
+            <option>🇨🇦 Canada</option>
+            <option>🇩🇪 Germany</option>
+            <option>🇬🇧 United Kingdom</option>
+            <option>🇸🇦 Saudi Arabia</option>
+            <option>🇦🇪 UAE</option>
+            <option>🇹🇷 Turkey</option>
+            <option>🇺🇸 USA</option>
+            <option data-i18n="f_other_country">🌍 دیگر ملک</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="f_time">پسندیدہ وقت</label>
+          <select class="form-select" id="f-time">
+            <option value="" data-i18n="f_time_select">وقت منتخب کریں</option>
+            <option data-i18n="f_time1">صبح (6am–12pm)</option>
+            <option data-i18n="f_time2">دوپہر (12pm–5pm)</option>
+            <option data-i18n="f_time3">شام (5pm–9pm)</option>
+            <option data-i18n="f_time4">رات (9pm–12am)</option>
+          </select>
+        </div>
+      </div>
+      <button class="submit-btn" onclick="handleEnroll()" data-i18n="f_submit">📩 داخلہ فارم بھیجیں</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">🕌 Learn Quran with Us</div>
+        <p class="footer-desc" data-i18n="footer_desc">استاذ عصمت اللہ کی آن لائن قرآن اکیڈمی۔ دنیا بھر میں بچوں اور بڑوں کو پڑھاتے ہیں۔</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61573682006093" target="_blank" class="fsoc fsoc-fb">f</a>
+          <a href="https://www.tiktok.com/@onlinequrantecher2" target="_blank" class="fsoc fsoc-tt">t</a>
+          <a href="https://wa.me/923418116520" target="_blank" class="fsoc fsoc-wa">w</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_links">فوری لنکس</div>
+        <ul class="footer-links">
+          <li><a href="#" data-i18n="nav_home">ہوم</a></li>
+          <li><a href="#courses" data-i18n="nav_courses">کورسز</a></li>
+          <li><a href="#about" data-i18n="nav_about">تعارف</a></li>
+          <li><a href="#enroll" data-i18n="nav_enroll">داخلہ لیں</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_contact">رابطہ</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/923418116520" target="_blank">📱 ‎+92 341 8116520</a></li>
+          <li><a href="https://wa.me/923042378071" target="_blank">📱 ‎+92 304 2378071</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61573682006093" target="_blank">📘 Facebook Page</a></li>
+          <li><a href="https://www.tiktok.com/@onlinequrantecher2" target="_blank">🎵 TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Learn Quran with Us | عصمت اللہ &nbsp;|&nbsp; جَزَاكَ اللهُ خَيْرًا</div>
+  </div>
+</footer>
+
+<div class="wa-float">
+  <a href="https://wa.me/923418116520" target="_blank" class="wa-btn" data-i18n="wa_float">💬 واٹس ایپ پر رابطہ کریں</a>
+</div>
+
+<script>
+const translations = {
+  ur: {
+    hadith_t:"تم میں سب سے بہتر وہ ہے جو قرآن سیکھے اور سکھائے", welcome_msg:"خوش آمدید!",
+    nav_home:"ہوم", nav_courses:"کورسز", nav_about:"تعارف", nav_contact:"رابطہ", nav_enroll:"داخلہ لیں",
+    hero_badge:"آن لائن قرآن اکیڈمی", hero_title:"قرآن سیکھیں ", hero_title_name:"عصمت اللہ", hero_sub:"آن لائن قرآن تعلیم",
+    hero_academy:"Learn Quran with Us Academy",
+    hero_desc:"گھر بیٹھے قرآن پاک کی تلاوت، تجوید اور حفظ سیکھیں — بچوں اور بڑوں دونوں کے لیے۔",
+    hero_btn1:"🎓 ابھی داخلہ لیں", hero_btn2:"کورسز دیکھیں",
+    stat_students:"طلباء", stat_rating:"ریٹنگ", stat_years:"سال تجربہ", stat_support:"سپورٹ",
+    follow_us:"ہمیں فالو کریں:",
+    teacher_name:"عصمت اللہ", teacher_tag:"مستند قرآن استاذ", teacher_subtag:"آن لائن قرآن معلم",
+    students_taught:"طلباء پڑھائے", years_teaching:"سال تجربہ",
+    about_tag:"استاذ کے بارے میں", about_title:"استاذ عصمت اللہ",
+    about_p1:"السلام علیکم! میں عصمت اللہ ہوں، ایک تجربہ کار آن لائن قرآن استاذ۔",
+    point1:"تجوید اور قرآن کی تلاوت میں مستند", point2:"بچوں اور بڑوں کو دنیا بھر میں پڑھاتے ہیں",
+    point3:"پاکستان، کینیڈا اور جرمنی سے طلباء", point4:"اردو اور انگریزی بولنے والے طلباء کے لیے دستیاب",
+    contact_title:"📞 رابطہ کریں",
+    courses_tag:"ہمارے پروگرام", courses_title:"پیش کردہ کورسز",
+    c1_level:"بنیادی", c1_name:"نورانی قاعدہ", c1_desc:"عربی حروف، آوازیں اور آسان الفاظ سے شروعات کریں۔", c1_tag:"بچوں کے لیے مثالی",
+    c2_level:"درمیانہ", c2_name:"قرآن مع تجوید", c2_desc:"تجوید کے قواعد سیکھیں اور درست تلفظ کے ساتھ تلاوت کریں۔", c2_tag:"تمام عمریں",
+    c3_level:"اعلیٰ", c3_name:"حفظ القرآن", c3_desc:"روزانہ نظرثانی اور رہنمائی کے ساتھ قرآن پاک حفظ کریں۔", c3_tag:"حفظ القرآن",
+    c4_level:"ترجمہ", c4_name:"ترجمہ قرآن", c4_desc:"قرآن کے معنی اپنی زبان میں سمجھیں۔", c4_tag:"ترجمہ قرآن",
+    c5_level:"بچوں کے لیے خاص", c5_name:"بچوں کی قرآن کلاس", c5_desc:"دلچسپ اور عمر کے مطابق سرگرمیوں کے ساتھ قرآن کا سبق۔",
+    c6_level:"بڑوں کے لیے", c6_name:"بڑوں کا قرآن کورس", c6_desc:"سیکھنے میں کبھی دیر نہیں۔ آرام دہ رفتار اور لچکدار اوقات۔", c6_tag:"لچکدار اوقات",
+    alim_tag:"خصوصی شارٹ کورسز", alim_title:"عالم / عالمہ کورسز — اپنی زبان میں",
+    alim_ar:"عربی عالم کورس", alim_ar_d:"عربی بولنے والے طلباء کے لیے",
+    alim_ur:"اردو عالم کورس", alim_ur_d:"اردو بولنے والے طلباء کے لیے",
+    alim_ps:"پشتو عالم کورس", alim_ps_d:"پشتو بولنے والے طلباء کے لیے",
+    alim_en:"انگلش عالم کورس", alim_en_d:"انگریزی بولنے والے طلباء کے لیے",
+    why_tag:"ہمیں کیوں چنیں", why_title:"عصمت اللہ سے کیوں سیکھیں؟",
+    w1_title:"کہیں سے بھی سیکھیں", w1_desc:"دنیا میں کہیں سے بھی کلاسز لیں۔",
+    w2_title:"مستند استاذ", w2_desc:"عصمت اللہ تجربہ کار اور قابل قرآن استاذ ہیں۔",
+    w3_title:"لچکدار وقت", w3_desc:"صبح، شام یا ویک اینڈ — اپنی پسند کا وقت چنیں۔",
+    w4_title:"بچوں اور بڑوں کے لیے", w4_desc:"چاہے عمر 5 ہو یا 55، آپ کے لیے کورس موجود ہے۔",
+    w5_title:"سرٹیفکیٹ", w5_desc:"کورس مکمل ہونے پر سرٹیفکیٹ حاصل کریں۔",
+    w6_title:"کئی زبانیں", w6_desc:"اردو، انگریزی، پشتو، عربی، ترکی اور جرمن میں کلاسز۔",
+    testi_tag:"طلباء کے تاثرات", testi_title:"ہمارے طلباء کیا کہتے ہیں",
+    t1_text:"\"استاذ عصمت اللہ بہترین معلم ہیں۔ میری بیٹی نے 2 ہفتوں میں سورہ فاتحہ مکمل سیکھ لی۔\"",
+    t3_text:"\"بہترین آن لائن قرآن استاذ۔ بہت صابر اور ہر کلاس منظم ہوتی ہے۔\"",
+    enroll_title:"داخلہ فارم", enroll_desc:"آج ہی سائن اپ کریں اور استاذ عصمت اللہ کے ساتھ اپنا قرآنی سفر شروع کریں!",
+    f_name:"پورا نام", f_whatsapp:"واٹس ایپ نمبر",
+    f_kids_count:"بچوں کی تعداد", f_kids_boys:"لڑکے", f_kids_girls:"لڑکیاں",
+    f_age:"عمر", f_age_select:"عمر منتخب کریں",
+    f_age1:"بچہ (4–12 سال)", f_age2:"نوجوان (13–18)", f_age3:"بالغ (18+)",
+    f_course:"کورس", f_course_select:"کورس منتخب کریں", f_country:"ملک", f_country_select:"ملک منتخب کریں",
+    f_other_country:"🌍 دیگر ملک", f_time:"پسندیدہ وقت", f_time_select:"وقت منتخب کریں",
+    f_time1:"صبح (6am–12pm)", f_time2:"دوپہر (12pm–5pm)", f_time3:"شام (5pm–9pm)", f_time4:"رات (9pm–12am)",
+    f_submit:"📩 داخلہ فارم بھیجیں",
+    footer_desc:"استاذ عصمت اللہ کی آن لائن قرآن اکیڈمی۔ دنیا بھر میں پڑھاتے ہیں۔",
+    footer_links:"فوری لنکس", footer_contact:"رابطہ", wa_float:"💬 واٹس ایپ پر رابطہ کریں"
+  },
+  en: {
+    hadith_t:"The best among you are those who learn the Quran and teach it", welcome_msg:"Welcome!",
+    nav_home:"Home", nav_courses:"Courses", nav_about:"About", nav_contact:"Contact", nav_enroll:"Enroll Now",
+    hero_badge:"Online Quran Academy", hero_title:"Learn Quran with ", hero_title_name:"Asmat Ullah", hero_sub:"Online Quran Teaching",
+    hero_academy:"Learn Quran with Us Academy",
+    hero_desc:"Start your journey to understand, recite, and memorize the Holy Quran — for children and adults — with a certified teacher.",
+    hero_btn1:"🎓 Enroll Now", hero_btn2:"View Courses",
+    stat_students:"Students", stat_rating:"Rating", stat_years:"Years Exp.", stat_support:"Support",
+    follow_us:"Follow us:",
+    teacher_name:"Asmat Ullah", teacher_tag:"Certified Quran Teacher", teacher_subtag:"Online Quran Teacher",
+    students_taught:"Students Taught", years_teaching:"Years Teaching",
+    about_tag:"About the Teacher", about_title:"Ustaz Asmat Ullah",
+    about_p1:"Assalamu Alaikum! I am Asmat Ullah, a dedicated online Quran teacher with years of experience.",
+    point1:"Certified in Tajweed & Quran Recitation", point2:"Teaches children and adults worldwide",
+    point3:"Students from Pakistan, Canada & Germany", point4:"Available for Urdu & English speaking students",
+    contact_title:"📞 Contact",
+    courses_tag:"Our Programs", courses_title:"Courses We Offer",
+    c1_level:"Beginner", c1_name:"Noorani Qaida", c1_desc:"Start from the basics — learn Arabic letters, sounds, and simple words.", c1_tag:"Great for Kids",
+    c2_level:"Intermediate", c2_name:"Quran with Tajweed", c2_desc:"Learn the rules of Tajweed and recite the Quran beautifully.", c2_tag:"All Ages",
+    c3_level:"Advanced", c3_name:"Hifz (Memorization)", c3_desc:"A structured program to memorize the Holy Quran.", c3_tag:"Hifz Program",
+    c4_level:"Translation", c4_name:"Quran Translation", c4_desc:"Understand the meaning of Quran in your own language.", c4_tag:"Translation",
+    c5_level:"Kids Special", c5_name:"Kids Quran Class", c5_desc:"Fun, engaging and age-appropriate Quran lessons.",
+    c6_level:"Adults", c6_name:"Adult Quran Course", c6_desc:"Never too late to learn. Comfortable pace and flexible timings.", c6_tag:"Flexible Timings",
+    alim_tag:"Special Short Courses", alim_title:"Alim / Alima Courses — In Your Language",
+    alim_ar:"Arabic Alim Course", alim_ar_d:"For Arabic-speaking students",
+    alim_ur:"Urdu Alim Course", alim_ur_d:"For Urdu-speaking students",
+    alim_ps:"Pashto Alim Course", alim_ps_d:"For Pashto-speaking students",
+    alim_en:"English Alim Course", alim_en_d:"For English-speaking students",
+    why_tag:"Why Choose Us", why_title:"Why Learn with Asmat Ullah?",
+    w1_title:"Learn from Anywhere", w1_desc:"Take classes from anywhere in the world.",
+    w2_title:"Certified Teacher", w2_desc:"Asmat Ullah is a qualified and experienced Quran teacher.",
+    w3_title:"Flexible Schedule", w3_desc:"Morning, evening, or weekend — choose a time that works.",
+    w4_title:"For Kids & Adults", w4_desc:"Whether you are 5 or 55, there is a course for you.",
+    w5_title:"Certificate", w5_desc:"Receive a certificate upon course completion.",
+    w6_title:"Multiple Languages", w6_desc:"Classes available in Urdu, English, Pashto, Arabic, Turkish & German.",
+    testi_tag:"Student Reviews", testi_title:"What Our Students Say",
+    t1_text:"\"Ustaz Asmat Ullah is an amazing teacher. My daughter learned Surah Al-Fatiha in just 2 weeks!\"",
+    t3_text:"\"Best online Quran teacher I have found. Very patient and well structured classes.\"",
+    enroll_title:"Enrollment Form", enroll_desc:"Sign up today and start your Quranic journey with Ustaz Asmat Ullah!",
+    f_name:"Full Name", f_whatsapp:"WhatsApp Number",
+    f_kids_count:"Number of Children", f_kids_boys:"Boys", f_kids_girls:"Girls",
+    f_age:"Age Group", f_age_select:"Select age group",
+    f_age1:"Child (4–12 years)", f_age2:"Teenager (13–18)", f_age3:"Adult (18+)",
+    f_course:"Course", f_course_select:"Select a course", f_country:"Country", f_country_select:"Select country",
+    f_other_country:"🌍 Other Country", f_time:"Preferred Time", f_time_select:"Select timing",
+    f_time1:"Morning (6am–12pm)", f_time2:"Afternoon (12pm–5pm)", f_time3:"Evening (5pm–9pm)", f_time4:"Night (9pm–12am)",
+    f_submit:"📩 Submit Enrollment Form",
+    footer_desc:"Online Quran Academy by Ustaz Asmat Ullah. Teaching worldwide.",
+    footer_links:"Quick Links", footer_contact:"Contact", wa_float:"💬 WhatsApp Us Now"
+  },
+  ps: {
+    hadith_t:"ستاسو غوره هغه دی چې قرآن زده کړي او ښوونه یې وکړي", welcome_msg:"ښه راغلاست!",
+    nav_home:"کور", nav_courses:"کورسونه", nav_about:"زموږ په اړه", nav_contact:"اړیکه", nav_enroll:"ننوتل",
+    hero_badge:"آنلاین قرآن اکاډمي", hero_title:"قرآن زده کړئ د ", hero_title_name:"عصمت الله", hero_sub:"آنلاین د قرآن ښوونه",
+    hero_academy:"Learn Quran with Us Academy",
+    hero_desc:"د کور له آرامه د قرآن کریم تلاوت، تجوید او حفظ زده کړئ۔",
+    hero_btn1:"🎓 اوس ننوتل وکړئ", hero_btn2:"کورسونه وګورئ",
+    stat_students:"زده کوونکي", stat_rating:"درجه بندي", stat_years:"کاله تجربه", stat_support:"ملاتړ",
+    follow_us:"موږ تعقیب کړئ:",
+    teacher_name:"عصمت الله", teacher_tag:"مستند د قرآن ښوونکی", teacher_subtag:"آنلاین د قرآن ښوونکی",
+    students_taught:"زده کوونکي زده کړي", years_teaching:"کاله تدریس",
+    about_tag:"د ښوونکي په اړه", about_title:"استاذ عصمت الله",
+    about_p1:"السلام علیکم! زه عصمت الله یم، یو تجربه لرونکی آنلاین د قرآن ښوونکی۔",
+    point1:"په تجوید او د قرآن تلاوت کې مستند", point2:"ماشومانو او لویانو ته په نړۍ کې ښوونه کوي",
+    point3:"زده کوونکي له پاکستان، کاناډا او آلمان څخه", point4:"د اردو او انګلیسي ژبو زده کوونکو لپاره شته",
+    contact_title:"📞 اړیکه ونیسئ",
+    courses_tag:"زموږ پروګرامونه", courses_title:"وړاندې شوي کورسونه",
+    c1_level:"ابتدايي", c1_name:"نوراني قاعده", c1_desc:"د عربي توري، غږونه او ساده کلمې زده کړئ۔", c1_tag:"د ماشومانو لپاره غوره",
+    c2_level:"منځنی", c2_name:"قرآن د تجوید سره", c2_desc:"د تجوید قواعد زده کړئ او سم تلاوت وکړئ۔", c2_tag:"ټول عمرونه",
+    c3_level:"پرمختللی", c3_name:"حفظ القرآن", c3_desc:"د ورځني بیاکتنې سره د قرآن کریم حفظ پروګرام۔", c3_tag:"د حفظ پروګرام",
+    c4_level:"ژباړه", c4_name:"د قرآن ژباړه", c4_desc:"د قرآن معنی په خپله ژبه پوه شئ۔", c4_tag:"ژباړه",
+    c5_level:"د ماشومانو لپاره ځانګړی", c5_name:"د ماشومانو قرآن ټولګی", c5_desc:"د وړوکو ماشومانو لپاره په زړه پورې درسونه۔",
+    c6_level:"لویان", c6_name:"د لویانو قرآن کورس", c6_desc:"زده کړه هیڅکله ناوخته نه ده۔", c6_tag:"د وخت انعطاف",
+    alim_tag:"ځانګړي لنډ کورسونه", alim_title:"عالم / عالمه کورسونه — په خپله ژبه",
+    alim_ar:"عربي عالم کورس", alim_ar_d:"د عربي ژبو زده کوونکو لپاره",
+    alim_ur:"اردو عالم کورس", alim_ur_d:"د اردو ژبو زده کوونکو لپاره",
+    alim_ps:"پښتو عالم کورس", alim_ps_d:"د پښتو ژبو زده کوونکو لپاره",
+    alim_en:"انګلیسي عالم کورس", alim_en_d:"د انګلیسي ژبو زده کوونکو لپاره",
+    why_tag:"موږ ولې غوره کړئ", why_title:"ولې د عصمت الله سره زده کړئ؟",
+    w1_title:"له هرځای زده کړئ", w1_desc:"له نړۍ هرځای ټولګي واخلئ۔",
+    w2_title:"مستند ښوونکی", w2_desc:"عصمت الله یو وړ او تجربه لرونکی ښوونکی دی۔",
+    w3_title:"د وخت انعطاف", w3_desc:"سهار، ماښام یا اونۍ پای — وخت وټاکئ۔",
+    w4_title:"د ماشومانو او لویانو لپاره", w4_desc:"که عمر 5 وي یا 55، کورس شته۔",
+    w5_title:"سرتیفیکیټ", w5_desc:"د کورس بشپړیدو وروسته سرتیفیکیټ ترلاسه کړئ۔",
+    w6_title:"ګڼې ژبې", w6_desc:"اردو، انګلیسي، پښتو، عربي، ترکي او آلماني کې ټولګي۔",
+    testi_tag:"د زده کوونکو نظرونه", testi_title:"زموږ زده کوونکي څه وایي",
+    t1_text:"\"استاذ عصمت الله یو عالي ښوونکی دی۔ زما لور په 2 اونیو کې سورة الفاتحه زده کړه۔\"",
+    t3_text:"\"غوره آنلاین د قرآن ښوونکی۔ ډېر صبر لرونکی۔\"",
+    enroll_title:"د ننوتلو فورمه", enroll_desc:"نن ورځ ثبت نام وکړئ او خپل سفر پیل کړئ!",
+    f_name:"بشپړ نوم", f_whatsapp:"د واتساپ شمیره",
+    f_kids_count:"د ماشومانو شمیر", f_kids_boys:"هلکان", f_kids_girls:"انجونې",
+    f_age:"عمر", f_age_select:"عمر وټاکئ",
+    f_age1:"ماشوم (4–12 کاله)", f_age2:"ځوان (13–18)", f_age3:"لوی (18+)",
+    f_course:"کورس", f_course_select:"کورس وټاکئ", f_country:"هیواد", f_country_select:"هیواد وټاکئ",
+    f_other_country:"🌍 نور هیواد", f_time:"غوره وخت", f_time_select:"وخت وټاکئ",
+    f_time1:"سهار (6am–12pm)", f_time2:"غرمه (12pm–5pm)", f_time3:"ماښام (5pm–9pm)", f_time4:"شپه (9pm–12am)",
+    f_submit:"📩 فورمه واستوئ",
+    footer_desc:"د استاذ عصمت الله آنلاین د قرآن اکاډمي۔",
+    footer_links:"چټک لینکونه", footer_contact:"اړیکه", wa_float:"💬 اوس موږ سره اړیکه ونیسئ"
+  },
+  ar: {
+    hadith_t:"خيركم من تعلم القرآن وعلمه", welcome_msg:"أهلاً وسهلاً!",
+    nav_home:"الرئيسية", nav_courses:"الدورات", nav_about:"من نحن", nav_contact:"اتصل بنا", nav_enroll:"سجل الآن",
+    hero_badge:"أكاديمية القرآن عبر الإنترنت", hero_title:"تعلم القرآن مع ", hero_title_name:"عصمت الله", hero_sub:"تعليم القرآن عبر الإنترنت",
+    hero_academy:"Learn Quran with Us Academy",
+    hero_desc:"ابدأ رحلتك لفهم وتلاوة وحفظ القرآن الكريم — للأطفال والكبار — مع معلم معتمد.",
+    hero_btn1:"🎓 سجل الآن", hero_btn2:"عرض الدورات",
+    stat_students:"الطلاب", stat_rating:"التقييم", stat_years:"سنوات الخبرة", stat_support:"الدعم",
+    follow_us:"تابعنا:",
+    teacher_name:"عصمت الله", teacher_tag:"معلم قرآن معتمد", teacher_subtag:"معلم قرآن عبر الإنترنت",
+    students_taught:"طالب تم تدريسهم", years_teaching:"سنوات التدريس",
+    about_tag:"عن المعلم", about_title:"الأستاذ عصمت الله",
+    about_p1:"السلام عليكم! أنا عصمت الله، معلم قرآن متخصص عبر الإنترنت بخبرة سنوات عديدة.",
+    point1:"معتمد في التجويد وتلاوة القرآن", point2:"يدرّس الأطفال والكبار حول العالم",
+    point3:"طلاب من باكستان وكندا وألمانيا", point4:"متاح للطلاب الناطقين بالأردية والإنجليزية",
+    contact_title:"📞 اتصل بنا",
+    courses_tag:"برامجنا", courses_title:"الدورات المقدمة",
+    c1_level:"مبتدئ", c1_name:"نورانی قاعدة", c1_desc:"ابدأ بالأساسيات — تعلم الحروف العربية والأصوات والكلمات البسيطة.", c1_tag:"رائع للأطفال",
+    c2_level:"متوسط", c2_name:"القرآن مع التجويد", c2_desc:"تعلم أحكام التجويد وتلاوة القرآن بشكل جميل.", c2_tag:"لكل الأعمار",
+    c3_level:"متقدم", c3_name:"حفظ القرآن", c3_desc:"برنامج منظم لحفظ القرآن الكريم.", c3_tag:"برنامج الحفظ",
+    c4_level:"الترجمة", c4_name:"ترجمة القرآن", c4_desc:"افهم معنى القرآن بلغتك.", c4_tag:"الترجمة",
+    c5_level:"خاص بالأطفال", c5_name:"فصل قرآن للأطفال", c5_desc:"دروس قرآنية ممتعة ومناسبة للعمر.",
+    c6_level:"للكبار", c6_name:"دورة قرآن للكبار", c6_desc:"لا يفوت الأوان أبداً للتعلم. أوقات مرنة.", c6_tag:"أوقات مرنة",
+    alim_tag:"دورات خاصة قصيرة", alim_title:"دورات عالم / عالمة — بلغتك",
+    alim_ar:"دورة عالم عربية", alim_ar_d:"للطلاب الناطقين بالعربية",
+    alim_ur:"دورة عالم أردية", alim_ur_d:"للطلاب الناطقين بالأردية",
+    alim_ps:"دورة عالم بشتو", alim_ps_d:"للطلاب الناطقين بالبشتو",
+    alim_en:"دورة عالم إنجليزية", alim_en_d:"للطلاب الناطقين بالإنجليزية",
+    why_tag:"لماذا تختارنا", why_title:"لماذا تتعلم مع عصمت الله؟",
+    w1_title:"تعلم من أي مكان", w1_desc:"احضر الدروس من أي مكان في العالم.",
+    w2_title:"معلم معتمد", w2_desc:"عصمت الله معلم قرآن مؤهل وذو خبرة.",
+    w3_title:"جدول مرن", w3_desc:"صباحاً أو مساءً أو في عطلة نهاية الأسبوع.",
+    w4_title:"للأطفال والكبار", w4_desc:"سواء كان عمرك 5 أو 55، هناك دورة لك.",
+    w5_title:"شهادة", w5_desc:"احصل على شهادة عند إكمال الدورة.",
+    w6_title:"لغات متعددة", w6_desc:"دروس متاحة بالأردية والإنجليزية والبشتو والعربية والتركية والألمانية.",
+    testi_tag:"آراء الطلاب", testi_title:"ماذا يقول طلابنا",
+    t1_text:"\"الأستاذ عصمت الله معلم رائع. تعلمت ابنتي سورة الفاتحة في أسبوعين فقط!\"",
+    t3_text:"\"أفضل معلم قرآن عبر الإنترنت وجدته. صبور جداً ودروس منظمة جيداً.\"",
+    enroll_title:"استمارة التسجيل", enroll_desc:"سجل اليوم وابدأ رحلتك القرآنية مع الأستاذ عصمت الله!",
+    f_name:"الاسم الكامل", f_whatsapp:"رقم الواتساب",
+    f_kids_count:"عدد الأطفال", f_kids_boys:"أولاد", f_kids_girls:"بنات",
+    f_age:"الفئة العمرية", f_age_select:"اختر الفئة العمرية",
+    f_age1:"طفل (4-12 سنة)", f_age2:"مراهق (13-18)", f_age3:"بالغ (18+)",
+    f_course:"الدورة", f_course_select:"اختر دورة", f_country:"الدولة", f_country_select:"اختر الدولة",
+    f_other_country:"🌍 دولة أخرى", f_time:"الوقت المفضل", f_time_select:"اختر الوقت",
+    f_time1:"صباحاً (6-12)", f_time2:"ظهراً (12-5)", f_time3:"مساءً (5-9)", f_time4:"ليلاً (9-12)",
+    f_submit:"📩 إرسال استمارة التسجيل",
+    footer_desc:"أكاديمية القرآن عبر الإنترنت للأستاذ عصمت الله. يدرّس حول العالم.",
+    footer_links:"روابط سريعة", footer_contact:"اتصل بنا", wa_float:"💬 تواصل معنا عبر واتساب"
+  },
+  tr: {
+    hadith_t:"Sizin en hayırlınız Kur'an'ı öğrenen ve öğreteninizdir", welcome_msg:"Hoş geldiniz!",
+    nav_home:"Ana Sayfa", nav_courses:"Kurslar", nav_about:"Hakkımızda", nav_contact:"İletişim", nav_enroll:"Şimdi Kayıt Ol",
+    hero_badge:"Online Kuran Akademisi", hero_title:"Kuran Öğrenin ", hero_title_name:"Asmat Ullah", hero_sub:"Online Kuran Eğitimi",
+    hero_academy:"Learn Quran with Us Academy",
+    hero_desc:"Kuran-ı Kerim'i anlama, okuma ve ezberleme yolculuğunuza başlayın — çocuklar ve yetişkinler için, sertifikalı bir öğretmenle.",
+    hero_btn1:"🎓 Şimdi Kayıt Ol", hero_btn2:"Kursları Görüntüle",
+    stat_students:"Öğrenci", stat_rating:"Puan", stat_years:"Yıl Deneyim", stat_support:"Destek",
+    follow_us:"Bizi takip edin:",
+    teacher_name:"Asmat Ullah", teacher_tag:"Sertifikalı Kuran Öğretmeni", teacher_subtag:"Online Kuran Öğretmeni",
+    students_taught:"Öğretilen Öğrenci", years_teaching:"Yıl Öğretmenlik",
+    about_tag:"Öğretmen Hakkında", about_title:"Üstad Asmat Ullah",
+    about_p1:"Selamün aleyküm! Ben Asmat Ullah, yıllarca deneyimli online Kuran öğretmeniyim.",
+    point1:"Tecvid ve Kuran kıraatinde sertifikalı", point2:"Dünya çapında çocuklara ve yetişkinlere öğretiyor",
+    point3:"Pakistan, Kanada ve Almanya'dan öğrenciler", point4:"Urduca ve İngilizce konuşan öğrenciler için uygun",
+    contact_title:"📞 İletişim",
+    courses_tag:"Programlarımız", courses_title:"Sunulan Kurslar",
+    c1_level:"Başlangıç", c1_name:"Nurani Kaide", c1_desc:"Temellerden başlayın — Arapça harfler, sesler ve basit kelimeler öğrenin.", c1_tag:"Çocuklar İçin Harika",
+    c2_level:"Orta Seviye", c2_name:"Tecvidli Kuran", c2_desc:"Tecvid kurallarını öğrenin ve Kuran'ı güzel bir şekilde okuyun.", c2_tag:"Her Yaş",
+    c3_level:"İleri Seviye", c3_name:"Hıfz (Ezber)", c3_desc:"Kuran-ı Kerim'i ezberlemek için yapılandırılmış program.", c3_tag:"Hıfz Programı",
+    c4_level:"Çeviri", c4_name:"Kuran Çevirisi", c4_desc:"Kuran'ın anlamını kendi dilinizde anlayın.", c4_tag:"Çeviri",
+    c5_level:"Çocuklara Özel", c5_name:"Çocuk Kuran Dersi", c5_desc:"Küçük çocuklar için eğlenceli ve yaşa uygun dersler.",
+    c6_level:"Yetişkinler", c6_name:"Yetişkin Kuran Kursu", c6_desc:"Öğrenmek için asla geç değil. Esnek saatler.", c6_tag:"Esnek Saatler",
+    alim_tag:"Özel Kısa Kurslar", alim_title:"Alim / Alime Kursları — Kendi Dilinizde",
+    alim_ar:"Arapça Alim Kursu", alim_ar_d:"Arapça konuşan öğrenciler için",
+    alim_ur:"Urduca Alim Kursu", alim_ur_d:"Urduca konuşan öğrenciler için",
+    alim_ps:"Peştuca Alim Kursu", alim_ps_d:"Peştuca konuşan öğrenciler için",
+    alim_en:"İngilizce Alim Kursu", alim_en_d:"İngilizce konuşan öğrenciler için",
+    why_tag:"Neden Bizi Seçmelisiniz", why_title:"Neden Asmat Ullah ile Öğrenmelisiniz?",
+    w1_title:"Her Yerden Öğrenin", w1_desc:"Dünyanın her yerinden derslere katılın.",
+    w2_title:"Sertifikalı Öğretmen", w2_desc:"Asmat Ullah kalifiye ve deneyimli bir Kuran öğretmenidir.",
+    w3_title:"Esnek Program", w3_desc:"Sabah, akşam veya hafta sonu — size uygun bir zaman seçin.",
+    w4_title:"Çocuklar ve Yetişkinler İçin", w4_desc:"5 veya 55 yaşında olun, sizin için bir kurs var.",
+    w5_title:"Sertifika", w5_desc:"Kurs tamamlandığında sertifika alın.",
+    w6_title:"Çoklu Dil", w6_desc:"Urduca, İngilizce, Peştuca, Arapça, Türkçe ve Almanca derslerimiz mevcuttur.",
+    testi_tag:"Öğrenci Yorumları", testi_title:"Öğrencilerimiz Ne Diyor",
+    t1_text:"\"Üstad Asmat Ullah harika bir öğretmen. Kızım sadece 2 haftada Fatiha Suresi'ni öğrendi!\"",
+    t3_text:"\"Bulduğum en iyi online Kuran öğretmeni. Çok sabırlı ve iyi yapılandırılmış dersler.\"",
+    enroll_title:"Kayıt Formu", enroll_desc:"Bugün kaydolun ve Üstad Asmat Ullah ile Kuran yolculuğunuza başlayın!",
+    f_name:"Tam Ad", f_whatsapp:"WhatsApp Numarası",
+    f_kids_count:"Çocuk Sayısı", f_kids_boys:"Erkek", f_kids_girls:"Kız",
+    f_age:"Yaş Grubu", f_age_select:"Yaş grubu seçin",
+    f_age1:"Çocuk (4–12 yaş)", f_age2:"Genç (13–18)", f_age3:"Yetişkin (18+)",
+    f_course:"Kurs", f_course_select:"Kurs seçin", f_country:"Ülke", f_country_select:"Ülke seçin",
+    f_other_country:"🌍 Diğer Ülke", f_time:"Tercih Edilen Zaman", f_time_select:"Zaman seçin",
+    f_time1:"Sabah (6-12)", f_time2:"Öğleden Sonra (12-17)", f_time3:"Akşam (17-21)", f_time4:"Gece (21-24)",
+    f_submit:"📩 Kayıt Formunu Gönder",
+    footer_desc:"Üstad Asmat Ullah'ın Online Kuran Akademisi. Dünya çapında öğretiyor.",
+    footer_links:"Hızlı Bağlantılar", footer_contact:"İletişim", wa_float:"💬 Şimdi WhatsApp"
+  },
+  de: {
+    hadith_t:"Die Besten unter euch sind die, die den Koran lernen und lehren", welcome_msg:"Willkommen!",
+    nav_home:"Startseite", nav_courses:"Kurse", nav_about:"Über uns", nav_contact:"Kontakt", nav_enroll:"Jetzt anmelden",
+    hero_badge:"Online Koran-Akademie", hero_title:"Lernen Sie Koran mit ", hero_title_name:"Asmat Ullah", hero_sub:"Online Koran-Unterricht",
+    hero_academy:"Learn Quran with Us Academy",
+    hero_desc:"Beginnen Sie Ihre Reise, den Heiligen Koran zu verstehen, zu rezitieren und auswendig zu lernen — mit einem zertifizierten Lehrer.",
+    hero_btn1:"🎓 Jetzt anmelden", hero_btn2:"Kurse ansehen",
+    stat_students:"Schüler", stat_rating:"Bewertung", stat_years:"Jahre Erfahrung", stat_support:"Support",
+    follow_us:"Folgen Sie uns:",
+    teacher_name:"Asmat Ullah", teacher_tag:"Zertifizierter Koranlehrer", teacher_subtag:"Online Koranlehrer",
+    students_taught:"Unterrichtete Schüler", years_teaching:"Jahre Unterrichtserfahrung",
+    about_tag:"Über den Lehrer", about_title:"Ustaz Asmat Ullah",
+    about_p1:"Assalamu Alaikum! Ich bin Asmat Ullah, ein engagierter Online-Koranlehrer mit langjähriger Erfahrung.",
+    point1:"Zertifiziert in Tajweed & Koranrezitation", point2:"Unterrichtet Kinder und Erwachsene weltweit",
+    point3:"Schüler aus Pakistan, Kanada & Deutschland", point4:"Verfügbar für Urdu- und Englisch sprechende Schüler",
+    contact_title:"📞 Kontakt",
+    courses_tag:"Unsere Programme", courses_title:"Unsere Kurse",
+    c1_level:"Anfänger", c1_name:"Noorani Qaida", c1_desc:"Beginnen Sie mit den Grundlagen — arabische Buchstaben und Laute.", c1_tag:"Ideal für Kinder",
+    c2_level:"Mittelstufe", c2_name:"Koran mit Tajweed", c2_desc:"Lernen Sie die Regeln des Tajweed und rezitieren Sie schön.", c2_tag:"Alle Altersgruppen",
+    c3_level:"Fortgeschritten", c3_name:"Hifz (Auswendiglernen)", c3_desc:"Strukturiertes Programm zum Auswendiglernen des Korans.", c3_tag:"Hifz-Programm",
+    c4_level:"Übersetzung", c4_name:"Koranübersetzung", c4_desc:"Verstehen Sie die Bedeutung des Korans in Ihrer Sprache.", c4_tag:"Übersetzung",
+    c5_level:"Kinderprogramm", c5_name:"Koran-Kinderkurs", c5_desc:"Unterhaltsame und altersgerechte Koranlektionen.",
+    c6_level:"Erwachsene", c6_name:"Erwachsenen-Korankurs", c6_desc:"Nie zu spät zum Lernen. Flexible Zeiten.", c6_tag:"Flexible Zeiten",
+    alim_tag:"Spezielle Kurzkurse", alim_title:"Alim / Alima Kurse — In Ihrer Sprache",
+    alim_ar:"Arabischer Alim-Kurs", alim_ar_d:"Für arabischsprachige Schüler",
+    alim_ur:"Urdu Alim-Kurs", alim_ur_d:"Für Urdu-sprechende Schüler",
+    alim_ps:"Paschtu Alim-Kurs", alim_ps_d:"Für Paschtu-sprechende Schüler",
+    alim_en:"Englischer Alim-Kurs", alim_en_d:"Für englischsprachige Schüler",
+    why_tag:"Warum uns wählen", why_title:"Warum mit Asmat Ullah lernen?",
+    w1_title:"Von überall lernen", w1_desc:"Nehmen Sie von überall am Unterricht teil.",
+    w2_title:"Zertifizierter Lehrer", w2_desc:"Asmat Ullah ist ein qualifizierter und erfahrener Koranlehrer.",
+    w3_title:"Flexibler Zeitplan", w3_desc:"Morgens, abends oder am Wochenende.",
+    w4_title:"Für Kinder & Erwachsene", w4_desc:"Ob Sie 5 oder 55 sind, es gibt einen passenden Kurs.",
+    w5_title:"Zertifikat", w5_desc:"Erhalten Sie ein Zertifikat nach Abschluss des Kurses.",
+     w6_title:"Mehrere Sprachen", w6_desc:"Kurse auf Urdu, Englisch, Paschtu, Arabisch, Türkisch und Deutsch.",
+    testi_tag:"Schülerbewertungen", testi_title:"Was unsere Schüler sagen",
+    t1_text:"\"Ustaz Asmat Ullah ist ein großartiger Lehrer. Meine Tochter hat in nur 2 Wochen Surah Al-Fatiha gelernt!\"",
+    t3_text:"\"Der beste Online-Koranlehrer, den ich gefunden habe. Sehr geduldig und gut strukturiert.\"",
+    enroll_title:"Anmeldeformular", enroll_desc:"Melden Sie sich noch heute an und beginnen Sie Ihre Koranreise!",
+    f_name:"Vollständiger Name", f_whatsapp:"WhatsApp-Nummer",
+    f_kids_count:"Anzahl der Kinder", f_kids_boys:"Jungen", f_kids_girls:"Mädchen",
+    f_age:"Altersgruppe", f_age_select:"Altersgruppe wählen",
+    f_age1:"Kind (4–12 Jahre)", f_age2:"Teenager (13–18)", f_age3:"Erwachsener (18+)",
+    f_course:"Kurs", f_course_select:"Kurs wählen", f_country:"Land", f_country_select:"Land wählen",
+    f_other_country:"🌍 Anderes Land", f_time:"Bevorzugte Zeit", f_time_select:"Zeit wählen",
+    f_time1:"Morgen (6-12 Uhr)", f_time2:"Nachmittag (12-17 Uhr)", f_time3:"Abend (17-21 Uhr)", f_time4:"Nacht (21-24 Uhr)",
+    f_submit:"📩 Anmeldeformular senden",
+    footer_desc:"Online Koran-Akademie von Ustaz Asmat Ullah. Unterricht weltweit.",
+    footer_links:"Schnelllinks", footer_contact:"Kontakt", wa_float:"💬 Jetzt WhatsApp"
+  }
+};
+
+function setLang(lang){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  if(lang==='ur' || lang==='ps' || lang==='ar'){
+    document.body.setAttribute('dir','rtl');
+  } else {
+    document.body.setAttribute('dir','ltr');
+  }
+  document.documentElement.setAttribute('lang', lang);
+
+  const posterMap = {ur:'poster-ps.png', ps:'poster-ps.png', en:'poster-en.png', ar:'poster-ar-en.png', tr:'poster-tr.png', de:'poster-de.png'};
+  const posterEl = document.getElementById('lang-poster');
+  if(posterEl && posterMap[lang]) posterEl.src = posterMap[lang];
+}
+
+function handleEnroll(){
+  var name = document.getElementById('f-name').value;
+  var phone = document.getElementById('f-phone').value;
+  var kidsCount = document.getElementById('f-kids-count').value;
+  var kidsBoys = document.getElementById('f-kids-boys').value;
+  var kidsGirls = document.getElementById('f-kids-girls').value;
+  var age = document.getElementById('f-age').value;
+  var course = document.getElementById('f-course').value;
+  var country = document.getElementById('f-country').value;
+  var time = document.getElementById('f-time').value;
+
+  if(!name || !phone){
+    alert('براہ کرم نام اور WhatsApp نمبر ضرور لکھیں! / Please enter name and WhatsApp number!');
+    return;
+  }
+
+  var msg = '🕌 *نیا داخلہ - Learn Quran with Us*\n\n';
+  msg += '👤 نام: ' + name + '\n';
+  msg += '📱 WhatsApp: ' + phone + '\n';
+  msg += '👶 بچوں کی تعداد: ' + (kidsCount || '-') + ' (لڑکے: ' + (kidsBoys||'0') + ', لڑکیاں: ' + (kidsGirls||'0') + ')\n';
+  msg += '🎂 عمر: ' + (age || 'نہیں بتایا') + '\n';
+  msg += '📖 کورس: ' + (course || 'نہیں بتایا') + '\n';
+  msg += '🌍 ملک: ' + (country || 'نہیں بتایا') + '\n';
+  msg += '🕐 وقت: ' + (time || 'نہیں بتایا') + '\n\n';
+  msg += '✅ داخلہ فارم بھیجا گیا!';
+
+  var waLink = 'https://wa.me/923418116520?text=' + encodeURIComponent(msg);
+  window.open(waLink, '_blank');
+
+  var btn = document.querySelector('.submit-btn');
+  var orig = btn.textContent;
+  btn.textContent = '✅ WhatsApp کھل رہا ہے!';
+  btn.style.background = '#2E8B57';
+  btn.style.color = '#fff';
+  setTimeout(function(){
+    btn.textContent = orig;
+    btn.style.background = 'var(--gold)';
+    btn.style.color = 'var(--green-deep)';
+  }, 5000);
+}
+</script>
+</body>
+</html>
