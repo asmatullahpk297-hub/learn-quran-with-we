@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://learn-quran-with-us.netlify.app/sitemap.xml
